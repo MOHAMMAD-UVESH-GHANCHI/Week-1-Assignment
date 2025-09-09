@@ -9,13 +9,14 @@ body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   line-height: 3;
   color: #ffffff;
-  background-color: #f5f5f5;
+  background-color: rgb(163, 196, 224);
   padding: 20px;
 }
 
 /* Header styles */
 #page-header{
   color: black;
+  text-align: center;
 }
 header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
