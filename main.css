@@ -7,16 +7,19 @@
 
 body {
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  line-height: 20;
-  color: lightgrey;
+  line-height: 3;
+  color: #ffffff;
   background-color: #f5f5f5;
   padding: 20px;
 }
 
 /* Header styles */
+#page-header{
+  color: black;
+}
 header {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  color: black;
   padding: 2rem;
   border-radius: 8px;
   margin-bottom: 2rem;
@@ -71,6 +74,7 @@ section p {
   border-radius: 6px;
   padding: 1rem;
   margin-top: 1rem;
+  color: black;
 }
 
 .output h3 {
