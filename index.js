@@ -35,9 +35,44 @@ users.forEach((user) => {
       .join("");
   } });
 // 3. Create a reusable function that takes any array and uses logic to render a list of character names in the HTML. Use this function to populate the list with id "function-list"
-
+function renderList(array, elementId) {
+  const list = document.getElementById(elementId);
+  list.innerHTML = array.map(u => `<li>${u.name}</li>`).join("");
+}
+renderList(users, "function-list");
 // 4. Create a function that takes an array and an age threshold parameter. The function should only display characters whose age is below the given number. Render results in the list with id "age-filter-list"
-
+function renderByAge(array, ageLimit, elementId) {
+  const filtered = array.filter(u => u.age < ageLimit);
+  const list = document.getElementById(elementId);
+  list.innerHTML = filtered.map(u => `<li>${u.name}</li>`).join("");
+}
+renderByAge(users, 50, "age-filter-list");
 // 5. Add error handling to your functions that will log an error message using console.error() if any object doesn't have a "name" property. Display any error messages in the div with id "error-messages"
+function renderWithErrors(array, elementId, errorElementId) {
+  const list = document.getElementById(elementId);
+  const errorDiv = document.getElementById(errorElementId);
+  let errors = "";
 
+  const valid = array.filter((u, index) => {
+    if (!u.name) {
+      const msg = `Error: Object at index ${index} is missing "name" property.`;
+      console.error(msg);
+      errors += `<p>${msg}</p>`;
+      return false;
+    }
+    return true;
+  });
+
+  list.innerHTML = valid.map(u => `<li>${u.name}</li>`).join("");
+  errorDiv.innerHTML = errors;
+}
+renderWithErrors(users, "error-handling-list", "error-messages");
 // 6. Test your error handling by creating a second array that's intentionally broken (missing name properties) and passing it to your functions. Verify that your error handling works correctly and displays errors in the div with id "broken-array-errors"
+const brokenUsers = [
+  { id: 1, name: "Mace Windu", age: 53 },
+  { id: 2, age: 44 }, 
+  { id: 3, name: "Count Dooku" }, 
+  { id: 4 }, 
+];
+
+renderWithErrors(brokenUsers, "broken-array-list", "broken-array-errors");
