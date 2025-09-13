@@ -20,21 +20,16 @@ const users = [
 console.log("All Characters:");
 users.forEach(user => console.log(user.name));
 const namesList = document.getElementById("names-list");
-users.forEach(user => {
-  namesList.innerHTML = users.map(u => `<li>${u.name}</li>`).join("");
-});
+namesList.innerHTML = users.map(user => `<li>${user.name}</li>`).join("");
 // 2. Print out the names of characters whose age is less than 40 in the console, then render them in the HTML list with id "young-characters-list"
 console.log("Characters under 40:");
 const youngCharactersList = document.getElementById("young-characters-list");
 // Filter users under 40 years old
-users.forEach((user) => {
-  if (user.age < 40) {
-    console.log(user.name);
-    youngCharactersList.innerHTML = users
-      .filter((u) => u.age < 40)
-      .map((u) => `<li>${u.name}</li>`)
-      .join("");
-  } });
+users.filter(user => user.age < 40).forEach(user => console.log(user.name));
+youngCharactersList.innerHTML = users
+  .filter(user => user.age < 40)
+  .map(user => `<li>${user.name}</li>`)
+  .join("");
 // 3. Create a reusable function that takes any array and uses logic to render a list of character names in the HTML. Use this function to populate the list with id "function-list"
 function renderList(array, elementId) {
   const list = document.getElementById(elementId);
